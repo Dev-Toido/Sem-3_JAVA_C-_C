@@ -8,19 +8,15 @@
 //     v.	(A + (B * C)) - (D / E) 
 
 #include <iostream>
+#include <vector>
 #include <string>
 #include <stack>
 using namespace std;  
 
-int main() {
-    string infixExp,postfixExp;
-    stack<char> op;
-    char sc;
-
-    cout<<"Enter the expression: ";
-    getline(cin,infixExp);
-    infixExp.insert(0,"(");
-    infixExp.push_back(')');
+string infixToPostfix(string infixExp){
+    string postfixExp;char sc;stack<char> op;
+    infixExp.insert(0,"( ");
+    infixExp.append(" )");
 
 
     for(int i=0;i<infixExp.length();i++){
@@ -42,6 +38,17 @@ int main() {
         }
         
     }
-    cout<<postfixExp<<endl;
+    return postfixExp;
+}
+
+int main() {
+    vector<string> expressions={"(A + B) * (C - D) / E","(X + Y * Z) - (P / Q)","((A * B) + C) / (D - E)","((P + Q) * (R - S)) + T","(A + (B * C)) - (D / E)"};
+
+    cout<<"Welcome to Infix Expression to Postfix Expression!"<<endl;
+    cout<<"The Expressions are as follows: "<<endl;
+    for(int i=0;i<expressions.size();i++){
+        cout<<"Infix Exp "<<i+1<<": \t"<<expressions[i]<<endl;
+        cout<<"Postfix Exp "<<i+1<<": \t"<<infixToPostfix(expressions[i])<<endl<<endl;
+    }
     return 0;
 }
