@@ -52,6 +52,9 @@ int evalutePrefixExp(string prefixExp){
                     case '/':
                         ans=a/b;
                         break;
+                    case '%':
+                        ans=a%b;
+                        break;
                 }
                 result.push(ans);
         }
