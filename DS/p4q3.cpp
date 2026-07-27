@@ -65,8 +65,8 @@ int evalutePrefixExp(string prefixExp){
 int main() {
     vector<string> expressions={"+ * 5 6 - 20 8","- + 18 7 * 3 4","* + 9 6 / 24 4","+ - 30 10 * 2 5","- * 8 7 + 9 6"};
 
-    cout<<"Welcome to Infix Expression to Postfix Expression!"<<endl;
-    cout<<"The Expressions are as follows: "<<endl;
+    cout<<"Welcome to Postfix Expression evaluator!"<<endl;
+    cout<<"The Expressions and results are as follows: "<<endl;
     for(int i=0;i<expressions.size();i++){
         cout<<"Infix Exp "<<i+1<<": \t"<<expressions[i]<<"\t= "<<evalutePrefixExp(expressions[i])<<endl;
     }
