@@ -82,15 +82,16 @@ string infixToPostfix(string infixExp)
     return postfixExp;
 }
 
-string infixToPrefix(string infixExp)// precedence logic fix
+string infixToPrefix(string infixExp)
 {
     string prefixExp,sc;
     stack<string> op;
     infixExp.insert(0, "( ");
     infixExp.append(" )");
 
-    for (int i = 0; i < infixExp.length(); i++)
+    for (int i = infixExp.length()-1;i>=0 ; i--)
     {
+
         sc = infixExp[i];
         if (sc == "+" || sc == "-" || sc == "*" || sc == "/" || sc == "%")
         {
