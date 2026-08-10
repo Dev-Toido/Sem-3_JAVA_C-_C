@@ -1,81 +1,32 @@
 #include <stdio.h>
-#include <ctype.h>
-#include <string.h>
-
-char stack[100];
-int top = -1;
-
-void push(char c) { stack[++top] = c; }
-char pop() { return stack[top--]; }
-char peek() { return stack[top]; }
-
-int precedence(char c)
-{
-    if (c == '+' || c == '-')
-        return 1;
-    if (c == '*' || c == '/')
-        return 2;
-    return 0;
-}
-
-int isOperator(char c)
-{
-    return (c == '+' || c == '-' || c == '*' || c == '/');
-}
-
-void infixToPostfix(char infix[], char *postfix)
-{
-    //   2 --> int
-    //  '2'--> char
-    //  "2"--> string
-    //(A+B*(C-D)/E)
-    int i, j = 0;
-    for (i = 0; infix[i] != '\0'; i++)
-    {
-        char c = infix[i];
-        if (isalnum(c)) // A-Z || a-z || 0-9
-        {
-            postfix[j++] = c;
-        }
-        else if (c == '(')
-        {
-            push(c);
-        }
-        else if (c == ')')
-        {
-            while (top != -1 && peek() != '(')
-            {
-                postfix[j++] = pop();
-            }
-            pop();
-        }
-        else if (isOperator(c))
-        {
-            while (top != -1 && precedence(peek()) >= precedence(c))
-            {
-                postfix[j++] = pop();
-            }
-            push(c);
-        }
-    }
-    while (top != -1)
-    {
-        postfix[j++] = pop();
-    }
-
-    postfix[j] = '\0';
-}
-
+#include <conio.h>
 int main()
 {
-    char infix[100], postfix[100];
-
-    printf("Enter infix expression: ");
-    scanf("%s", infix);
-
-    infixToPostfix(infix, postfix);
-
-    printf("Postfix Expression: %s\n", postfix);
-
+    int n = 7;
+    int arr[n][n];
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            arr[i][j] = 0;
+        }
+    }
+    int row = 2, col, i, j;
+    arr[0][0] = arr[1][0] = arr[1][1] = 1;
+    while (row <= 7)
+    {
+        arr[row][0] = 1;
+        for (col = 1; col <= row; col++)
+            arr[row][col] = arr[row - 1][col - 1] + arr[row - 1][col];
+        row++;
+    }
+    for (i = 0; i < 7; i++)
+    {
+        printf("\n");
+        for (int k = 0; k < (n - i - 1); k++)
+            printf("\t");
+        for (j = 0; j <= i; j++)
+            printf("%d\t\t", arr[i][j]);
+    }
     return 0;
 }
