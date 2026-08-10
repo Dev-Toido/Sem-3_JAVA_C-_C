@@ -16,9 +16,10 @@ public class P4q8 {
 
         for(int i=0;i<n;i++){
             isPresent =false;
-            for(int j=0;j<count;j++){
+            for(int j=i+1;j<count;j++){
                 if(arr[i]==uni_arr[j]){
                     isPresent =true;
+                    break;
                 }
             }
             if(!isPresent){

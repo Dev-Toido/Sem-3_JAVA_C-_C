@@ -12,13 +12,21 @@ public class P4q7 {
             arr[i] = sc.nextInt();
         }
         max1=Integer.MIN_VALUE;max2=Integer.MIN_VALUE;
-        for (int i = 1; i < n; i++) {
-            if(arr[i]>max1){
-                max2=max1;
-                max1=arr[i];
+//        for (int i = 1; i < n; i++) {
+//            if(arr[i]>max1){
+//                max2=max1;
+//                max1=arr[i];
+//            }
+//            if(arr[i]<max1 && arr[i]>max2){
+//                max2=arr[i];
+//            }
+//        }
+        for(int i:arr){
+            if(i>max1){
+                max1=i;
             }
-            if(arr[i]<max1 && arr[i]>max2){
-                max2=arr[i];
+            else if(i>max2){
+                max2=i;
             }
         }
         System.out.println("The second largest number is = "+max2);

@@ -12,14 +12,14 @@ public class P4q5 {
             arr[i] = sc.nextInt();
         }
         min=max=arr[0];
-        for (int i = 0; i < n; i++) {
-            if(arr[i]<min){
-                min=arr[i];
+        for (int i :arr ) {
+            if(i<min){
+                min=i;
             }
-            if(arr[i]>max){
-                max=arr[i];
+            if(i>max){
+                max=i;
             }
-            sum+=arr[i];
+            sum+=i;
         }
         avg=(double)sum/n;
         System.out.println("Sum = "+sum);
